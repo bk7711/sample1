@@ -18,24 +18,24 @@
                 <a href="#">View Highscores</a>
             </li>
             <li class="time right">
-                Time: <span id="timer">90</span>
+                Time: <span id="timer"></span>
             </li>
         </ul>
     </nav>
     <main>
         <div id = "quiz">
             <div id="questions"></div>
-            <div id = "choices">
+            <ol id = "choices">
                 <div class = "choice" id = "a">Answer the questions correctly to gain points.</div>
                 <div class = "choice" id = "b">You have 90 seconds to complete the quiz.</div>
                 <div class = "choice" id = "c">Every incorrect answer will lose 10 additional seconds</div>
                 <div class = "choice" id = "d">The game is over after the last question or the time runs out.</div>
-            </div>
+            </ol>
             <div >
                 <p id = "result"></p>
             </div>
             
-            <button id = "start">START</button>
+            <button id = "start" data-state="visible">START</button>
         </div>
         
         <div id = "results">
