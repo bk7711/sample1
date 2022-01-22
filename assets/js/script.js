@@ -1,10 +1,11 @@
 var questionsEl = document.querySelector("#questions");
 var choicesEl = document.querySelector("#choices")
 var choiceEl = document.querySelector(".choice");
-var choiceA = document.querySelector("#a");
-var choiceB = document.querySelector("#b");
-var choiceC = document.querySelector("#c");
-var choiceD = document.querySelector("#d");
+var answerEl = document.querySelector("li");
+var choiceA = document.querySelector("#a0");
+var choiceB = document.querySelector("#a1");
+var choiceC = document.querySelector("#a2");
+var choiceD = document.querySelector("#a3");
 var startEl = document.querySelector("#start");
 var quizEl = document.querySelector("#quiz");
 var correctEl = document.querySelector("#correct");
@@ -13,6 +14,7 @@ var scoreEl = document.querySelector("#score");
 var resultEl = document.querySelector("#result");
 var highscoresEl = document.querySelector(".highscores");
 var timerEl = document.getElementById('timer');
+
 var currentQuestion = 0;
 
 var secondsLeft = 20;
@@ -35,7 +37,7 @@ var bank = [
         "C.  A central machine deep within Netscape's corporate offices",
         "D.  None of the above",
     ],
-    correctAnswer: "a"
+    correctAnswer: "a0"
     },
 
     {question: "What are variables used for in JavaScript Programs?",
@@ -45,98 +47,98 @@ var bank = [
         "C.  Causing high-school algebra flashbacks",
         "D.  None of the above",
     ],
-    correctAnswer: "a"
+    correctAnswer: "a0"
     },
 
-    {question: "_____ JavaScript statements embedded in an HTML page can respond to user events such as mouse-clicks, form input, and page navigation.",
-    answers:[
-        "A.  Client-side",
-        "B.  Server-side",
-        "C.  Local",
-        "D.  Native",
-    ],
-    correctAnswer: "a"
-    },
+    // {question: "_____ JavaScript statements embedded in an HTML page can respond to user events such as mouse-clicks, form input, and page navigation.",
+    // answers:[
+    //     "A.  Client-side",
+    //     "B.  Server-side",
+    //     "C.  Local",
+    //     "D.  Native",
+    // ],
+    // correctAnswer: "a"
+    // },
 
-    {question: "Which of the following are capabilities of functions in JavaScript?",
-    answers:[
-            "A.  Return a value",
-            "B.  Accept parameters and Return a value",
-            "C.  Accept parameters",
-            "D.  None of the above",
-    ],
-    correctAnswer: "c"
-    },
+    // {question: "Which of the following are capabilities of functions in JavaScript?",
+    // answers:[
+    //         "A.  Return a value",
+    //         "B.  Accept parameters and Return a value",
+    //         "C.  Accept parameters",
+    //         "D.  None of the above",
+    // ],
+    // correctAnswer: "c"
+    // },
 
-    {question: "Which of the following is not a valid JavaScript variable name?",
-    answers:[
-        "A.  _first_and_last_names",
-            "B.  2names",
-            "C.  FirstAndLast",
-            "D.  None of the above",
-    ],
-    correctAnswer: "b"
-    },
+    // {question: "Which of the following is not a valid JavaScript variable name?",
+    // answers:[
+    //     "A.  _first_and_last_names",
+    //         "B.  2names",
+    //         "C.  FirstAndLast",
+    //         "D.  None of the above",
+    // ],
+    // correctAnswer: "b"
+    // },
 
-    {question: "What is the correct syntax for referring to an external script called ' abc.js'?",
-    answers:[
-        "A. <script href=' abc.js'>",
-            "B. <script name=' abc.js'>",
-            "C. <script src=' abc.js'>",
-            "D. None of the above",
-    ],
-    correctAnswer: "c"
-    },
+    // {question: "What is the correct syntax for referring to an external script called ' abc.js'?",
+    // answers:[
+    //     "A. <script href=' abc.js'>",
+    //         "B. <script name=' abc.js'>",
+    //         "C. <script src=' abc.js'>",
+    //         "D. None of the above",
+    // ],
+    // correctAnswer: "c"
+    // },
 
-    {question: "Which types of image maps can be used with JavaScript?",
-    answers:[
-            "A.  Server-side image maps",
-            "B.  Client-side image maps",
-            "C.  Server-side image maps and Client-side image maps",
-            "D.  None of the above",
-    ],
-    correctAnswer: "b"
-    },
+    // {question: "Which types of image maps can be used with JavaScript?",
+    // answers:[
+    //         "A.  Server-side image maps",
+    //         "B.  Client-side image maps",
+    //         "C.  Server-side image maps and Client-side image maps",
+    //         "D.  None of the above",
+    // ],
+    // correctAnswer: "b"
+    // },
 
-    {question: "Which is the correct way to write a JavaScript array?",
-    answers:[
-            "A.  var txt = new Array(1:'tim',2:'kim',3:'jim')",
-            "B.  var txt = new Array:1=('tim')2=('kim')3=('jim')",
-            "C.  var txt = new Array('tim','kim','jim')",
-            "D.  var txt = new Array='tim','kim','jim'",
-    ],
-    correctAnswer: "c"
-    },
+    // {question: "Which is the correct way to write a JavaScript array?",
+    // answers:[
+    //         "A.  var txt = new Array(1:'tim',2:'kim',3:'jim')",
+    //         "B.  var txt = new Array:1=('tim')2=('kim')3=('jim')",
+    //         "C.  var txt = new Array('tim','kim','jim')",
+    //         "D.  var txt = new Array='tim','kim','jim'",
+    // ],
+    // correctAnswer: "c"
+    // },
 
-    {question: "JavaScript entities start with _______ and end with _________.",
-    answers:[
-            "A.  Semicolon, colon",
-            "B.  Semicolon, Ampersand",
-            "C.  Ampersand, colon",
-            "D.  Ampersand, semicolon",
-    ],
-    correctAnswer: "d"
-    },
+    // {question: "JavaScript entities start with _______ and end with _________.",
+    // answers:[
+    //         "A.  Semicolon, colon",
+    //         "B.  Semicolon, Ampersand",
+    //         "C.  Ampersand, colon",
+    //         "D.  Ampersand, semicolon",
+    // ],
+    // correctAnswer: "d"
+    // },
 
-    {question: "Which of the following is the structure of an if statement?",
-    answers:[
-            "A.  if (conditional expression is true) thenexecute this codeend if",
-            "B.  if (conditional expression is true)execute this codeend if",
-            "C.  if (conditional expression is true)   {then execute this code>->}",
-            "D.  if (conditional expression is true) then {execute this code}",
-    ],
-    correctAnswer: "c"
-    },
+    // {question: "Which of the following is the structure of an if statement?",
+    // answers:[
+    //         "A.  if (conditional expression is true) thenexecute this codeend if",
+    //         "B.  if (conditional expression is true)execute this codeend if",
+    //         "C.  if (conditional expression is true)   {then execute this code>->}",
+    //         "D.  if (conditional expression is true) then {execute this code}",
+    // ],
+    // correctAnswer: "c"
+    // },
 
-    {question: "The _______ method of an Array object adds and/or removes elements from an array.",
-    answers:[
-            "A.  Reverse",
-            "B.  Shift",
-            "C.  Slice",
-            "D.  Splice",
-    ],
-    correctAnswer: "d"
-    },
+    // {question: "The _______ method of an Array object adds and/or removes elements from an array.",
+    // answers:[
+    //         "A.  Reverse",
+    //         "B.  Shift",
+    //         "C.  Slice",
+    //         "D.  Splice",
+    // ],
+    // correctAnswer: "d"
+    // },
 ]
 //set timer on page
 var countdown = function(){
@@ -158,18 +160,56 @@ var countdown = function(){
             
     }, 1000);
 };
-//filter through and display question answer choices
-// var getChoices = function(){
-//     for(i = 0; i < 4; i++){
-//         choiceA.textContent = 
-//     }
-// }
+// filter through and display question answer choices
+var getChoices = function(){
+    q = bank[currentQuestion];
+    for(i = 0; i < q.answers.length; i++){
+        
+        
+        //create an li for answer choice
+        var answer = document.createElement("li");
+
+        //add text in created li
+        answer.innerHTML = q.answers[i];
+        
+        console.log(q.answers[i]);
+        //give id to created li
+        answer.setAttribute("id", "a" + i)
+
+        //set style for created li
+
+        //append created li
+        choicesEl.appendChild(answer);
+
+    }
+};
+//correct answer
+var correct = function(){
+
+};
+//verify answer is correct
+var verifyAnswer = function(event){
+    answerEl.addEventListener("click", function(){
+        if(event.target.id == bank[currentQuestion].correctAnswer){
+            correctEl++;
+            resultEl.innerHTML = "CORRECT"
+            resultEl.setAttribute("style", "background-color: green;")
+        }else{
+            secondsLeft -= 2;
+            resultEl.innerHTML = "WRONG";
+            resultEl.setAttribute("style", "background-color: red;");
+        }
+        
+    })
+};
+
 //show questions for the quiz
 var pullQuestions = function(){
-    for (index = 0; index < bank.length; index++){
-        questionsEl.innerHTML = "<p>" + bank[index].question + "<p/>";
-        
-        
+    for (currentQuestion = 0; currentQuestion < bank.length; currentQuestion++){
+        questionsEl.innerHTML = "<p>" + bank[currentQuestion].question + "<p/>";
+       getChoices(); 
+    // verifyAnswer();
+        choicesEl.innerHTML = " ";
     }
 }
 
